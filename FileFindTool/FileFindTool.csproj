@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\FileChecker.cs" />
     <Compile Include="Utils\FilesEnumerator.cs" />
+    <Compile Include="Utils\NotepadPluPlusHelper.cs" />
     <Compile Include="Utils\RunDLL32Helper.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
