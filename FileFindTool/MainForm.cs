@@ -30,6 +30,7 @@ namespace FileFindTool
             InitializeFileTypesCombobox();
 
             fileType_comboBox.GotFocus += fileType_comboBox_OnFocus;
+            toolStripStatusLabel.Text = "";
         }
 
 
@@ -107,7 +108,7 @@ namespace FileFindTool
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = searchText_textBox;
+            //this.ActiveControl = searchText_textBox;
         }
 
         private void open_btn_Click(object sender, EventArgs e)
@@ -119,7 +120,7 @@ namespace FileFindTool
             if (result == CommonFileDialogResult.Ok)
             {
                 openFolder_textBox.Text = dlg.FileName;
-                currentFile_label.Text = "";
+                toolStripStatusLabel.Text = "";
             }
         }
 
@@ -171,7 +172,7 @@ namespace FileFindTool
 
             _searchState = SearchState.InProcess;
             ChangeButtons(_searchState);
-            currentFile_label.Text = "Search...";
+            toolStripStatusLabel.Text = "Search...";
         }
 
         private void pause_btn_Click(object sender, EventArgs e)
@@ -232,7 +233,7 @@ namespace FileFindTool
             }
             else if (_searchState == SearchState.OnPause)       // On pause
             {                
-                currentFile_label.Text = "Pause";
+                toolStripStatusLabel.Text = "Pause";
 
                 var result = e.Result as string[];
                 if (result != null)
@@ -243,12 +244,12 @@ namespace FileFindTool
             }
             else if (_searchState == SearchState.Stopped)       // Stopped
             {                
-                currentFile_label.Text = "";
+                toolStripStatusLabel.Text = "";
                 DisposeFilesEnumerator();
             }
             else if (_searchState == SearchState.InProcess)     //Done
             {                
-                currentFile_label.Text = "Complete";
+                toolStripStatusLabel.Text = "Complete";
 
                 _searchState = SearchState.Stopped;
                 ChangeButtons(_searchState);
@@ -291,6 +292,13 @@ namespace FileFindTool
                 e.Cancel = true;
                 return;
             }
+        }
+
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm form = new AboutForm();
+            form.ShowDialog(this);
         }
 
         #endregion

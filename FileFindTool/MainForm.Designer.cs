@@ -44,44 +44,49 @@
             this.find_btn = new System.Windows.Forms.Button();
             this.pause_btn = new System.Windows.Forms.Button();
             this.stop_btn = new System.Windows.Forms.Button();
-            this.currentFile_label = new System.Windows.Forms.Label();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.fileType_label = new System.Windows.Forms.Label();
             this.allDirectories_checkBox = new System.Windows.Forms.CheckBox();
             this.fileType_comboBox = new System.Windows.Forms.ComboBox();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.result_listBox_contextMenuStrip.SuspendLayout();
+            this.statusStrip.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFolder_textBox
             // 
-            this.openFolder_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.openFolder_textBox.Location = new System.Drawing.Point(518, 12);
+            this.openFolder_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.openFolder_textBox.Location = new System.Drawing.Point(14, 29);
+            this.openFolder_textBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.openFolder_textBox.Name = "openFolder_textBox";
-            this.openFolder_textBox.Size = new System.Drawing.Size(362, 20);
+            this.openFolder_textBox.Size = new System.Drawing.Size(730, 21);
             this.openFolder_textBox.TabIndex = 0;
             // 
             // open_btn
             // 
-            this.open_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.open_btn.Location = new System.Drawing.Point(886, 11);
+            this.open_btn.Location = new System.Drawing.Point(750, 27);
+            this.open_btn.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.open_btn.Name = "open_btn";
-            this.open_btn.Size = new System.Drawing.Size(86, 23);
+            this.open_btn.Size = new System.Drawing.Size(80, 25);
             this.open_btn.TabIndex = 1;
-            this.open_btn.Text = "Открыть";
+            this.open_btn.Text = "Открыть...";
             this.open_btn.UseVisualStyleBackColor = true;
             this.open_btn.Click += new System.EventHandler(this.open_btn_Click);
             // 
             // result_listBox
             // 
-            this.result_listBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.result_listBox.ContextMenuStrip = this.result_listBox_contextMenuStrip;
             this.result_listBox.FormattingEnabled = true;
             this.result_listBox.HorizontalScrollbar = true;
-            this.result_listBox.Location = new System.Drawing.Point(12, 12);
+            this.result_listBox.Location = new System.Drawing.Point(360, 64);
+            this.result_listBox.Margin = new System.Windows.Forms.Padding(3, 5, 5, 3);
             this.result_listBox.Name = "result_listBox";
-            this.result_listBox.Size = new System.Drawing.Size(500, 433);
+            this.result_listBox.Size = new System.Drawing.Size(470, 368);
             this.result_listBox.TabIndex = 11;
             this.result_listBox.DoubleClick += new System.EventHandler(this.result_listBox_DoubleClick);
             // 
@@ -132,19 +137,18 @@
             // 
             // searchText_textBox
             // 
-            this.searchText_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchText_textBox.Location = new System.Drawing.Point(518, 127);
+            this.searchText_textBox.Location = new System.Drawing.Point(14, 146);
             this.searchText_textBox.Multiline = true;
             this.searchText_textBox.Name = "searchText_textBox";
             this.searchText_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.searchText_textBox.Size = new System.Drawing.Size(362, 81);
+            this.searchText_textBox.Size = new System.Drawing.Size(330, 255);
             this.searchText_textBox.TabIndex = 6;
             // 
             // searchText_label
             // 
-            this.searchText_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.searchText_label.AutoSize = true;
-            this.searchText_label.Location = new System.Drawing.Point(515, 107);
+            this.searchText_label.Location = new System.Drawing.Point(11, 125);
+            this.searchText_label.Margin = new System.Windows.Forms.Padding(5);
             this.searchText_label.Name = "searchText_label";
             this.searchText_label.Size = new System.Drawing.Size(89, 13);
             this.searchText_label.TabIndex = 5;
@@ -152,10 +156,9 @@
             // 
             // find_btn
             // 
-            this.find_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.find_btn.Location = new System.Drawing.Point(886, 129);
+            this.find_btn.Location = new System.Drawing.Point(14, 407);
             this.find_btn.Name = "find_btn";
-            this.find_btn.Size = new System.Drawing.Size(86, 23);
+            this.find_btn.Size = new System.Drawing.Size(85, 25);
             this.find_btn.TabIndex = 7;
             this.find_btn.Text = "Найти";
             this.find_btn.UseVisualStyleBackColor = true;
@@ -163,11 +166,10 @@
             // 
             // pause_btn
             // 
-            this.pause_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pause_btn.Enabled = false;
-            this.pause_btn.Location = new System.Drawing.Point(886, 158);
+            this.pause_btn.Location = new System.Drawing.Point(136, 407);
             this.pause_btn.Name = "pause_btn";
-            this.pause_btn.Size = new System.Drawing.Size(86, 23);
+            this.pause_btn.Size = new System.Drawing.Size(85, 25);
             this.pause_btn.TabIndex = 8;
             this.pause_btn.Text = "Пауза";
             this.pause_btn.UseVisualStyleBackColor = true;
@@ -175,24 +177,14 @@
             // 
             // stop_btn
             // 
-            this.stop_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.stop_btn.Enabled = false;
-            this.stop_btn.Location = new System.Drawing.Point(886, 187);
+            this.stop_btn.Location = new System.Drawing.Point(259, 407);
             this.stop_btn.Name = "stop_btn";
-            this.stop_btn.Size = new System.Drawing.Size(86, 23);
+            this.stop_btn.Size = new System.Drawing.Size(85, 25);
             this.stop_btn.TabIndex = 9;
             this.stop_btn.Text = "Остановить";
             this.stop_btn.UseVisualStyleBackColor = true;
             this.stop_btn.Click += new System.EventHandler(this.stop_btn_Click);
-            // 
-            // currentFile_label
-            // 
-            this.currentFile_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.currentFile_label.AutoSize = true;
-            this.currentFile_label.Location = new System.Drawing.Point(518, 432);
-            this.currentFile_label.Name = "currentFile_label";
-            this.currentFile_label.Size = new System.Drawing.Size(0, 13);
-            this.currentFile_label.TabIndex = 10;
             // 
             // backgroundWorker
             // 
@@ -203,9 +195,9 @@
             // 
             // fileType_label
             // 
-            this.fileType_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fileType_label.AutoSize = true;
-            this.fileType_label.Location = new System.Drawing.Point(515, 48);
+            this.fileType_label.Location = new System.Drawing.Point(14, 64);
+            this.fileType_label.Margin = new System.Windows.Forms.Padding(5);
             this.fileType_label.Name = "fileType_label";
             this.fileType_label.Size = new System.Drawing.Size(64, 13);
             this.fileType_label.TabIndex = 2;
@@ -213,12 +205,12 @@
             // 
             // allDirectories_checkBox
             // 
-            this.allDirectories_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.allDirectories_checkBox.AutoSize = true;
             this.allDirectories_checkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.allDirectories_checkBox.Checked = true;
             this.allDirectories_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.allDirectories_checkBox.Location = new System.Drawing.Point(801, 48);
+            this.allDirectories_checkBox.Location = new System.Drawing.Point(173, 63);
+            this.allDirectories_checkBox.Margin = new System.Windows.Forms.Padding(5);
             this.allDirectories_checkBox.Name = "allDirectories_checkBox";
             this.allDirectories_checkBox.Size = new System.Drawing.Size(171, 17);
             this.allDirectories_checkBox.TabIndex = 3;
@@ -228,22 +220,66 @@
             // 
             // fileType_comboBox
             // 
-            this.fileType_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fileType_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fileType_comboBox.Location = new System.Drawing.Point(518, 70);
+            this.fileType_comboBox.Location = new System.Drawing.Point(14, 85);
             this.fileType_comboBox.Name = "fileType_comboBox";
-            this.fileType_comboBox.Size = new System.Drawing.Size(454, 21);
+            this.fileType_comboBox.Size = new System.Drawing.Size(330, 21);
             this.fileType_comboBox.TabIndex = 4;
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 444);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(844, 22);
+            this.statusStrip.SizingGrip = false;
+            this.statusStrip.TabIndex = 12;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel.Text = "Status";
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(844, 25);
+            this.menuStrip.TabIndex = 13;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 19);
+            this.helpToolStripMenuItem.Text = "Справка";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "О программе";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 461);
+            this.ClientSize = new System.Drawing.Size(844, 466);
+            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.fileType_comboBox);
             this.Controls.Add(this.allDirectories_checkBox);
             this.Controls.Add(this.fileType_label);
-            this.Controls.Add(this.currentFile_label);
             this.Controls.Add(this.stop_btn);
             this.Controls.Add(this.pause_btn);
             this.Controls.Add(this.find_btn);
@@ -255,12 +291,17 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Find Tool";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.result_listBox_contextMenuStrip.ResumeLayout(false);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,7 +317,6 @@
         private System.Windows.Forms.Button find_btn;
         private System.Windows.Forms.Button pause_btn;
         private System.Windows.Forms.Button stop_btn;
-        private System.Windows.Forms.Label currentFile_label;
         internal System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Label fileType_label;
         private System.Windows.Forms.CheckBox allDirectories_checkBox;
@@ -287,6 +327,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem OpenExplorerMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CopyPathMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
