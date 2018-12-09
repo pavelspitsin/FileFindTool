@@ -30,7 +30,11 @@ namespace FileFindTool
             InitializeFileTypesCombobox();
 
             fileType_comboBox.GotFocus += fileType_comboBox_OnFocus;
+<<<<<<< HEAD
             toolStripStatusLabel.Text = "";
+=======
+            OpenWithNotepadPlusPlus.Enabled = NotepadPluPlusHelper.IsInstalled();
+>>>>>>> EditWithNotepad++
         }
 
 
@@ -310,6 +314,18 @@ namespace FileFindTool
         {
             string filePath = GetSelectedFilePath();
             System.Diagnostics.Process.Start(filePath);
+        }
+
+        private void OpenWithNotepad_Click(object sender, EventArgs e)
+        {
+            string filePath = GetSelectedFilePath();
+            System.Diagnostics.Process.Start("notepad.exe", filePath);
+        }
+
+        private void OpenWithNotepadPlusPlus_Click(object sender, EventArgs e)
+        {
+            string filePath = GetSelectedFilePath();
+            System.Diagnostics.Process.Start("notepad++.exe", string.Format("\"{0}\"", filePath));
         }
 
         private void OpenWithMenuItem_Click(object sender, EventArgs e)

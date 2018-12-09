@@ -48,11 +48,16 @@
             this.fileType_label = new System.Windows.Forms.Label();
             this.allDirectories_checkBox = new System.Windows.Forms.CheckBox();
             this.fileType_comboBox = new System.Windows.Forms.ComboBox();
+<<<<<<< HEAD
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+            this.OpenWithNotepadPlusPlus = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenWithNotepad = new System.Windows.Forms.ToolStripMenuItem();
+>>>>>>> EditWithNotepad++
             this.result_listBox_contextMenuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -94,12 +99,14 @@
             // 
             this.result_listBox_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenMenuItem,
+            this.OpenWithNotepad,
+            this.OpenWithNotepadPlusPlus,
             this.OpenWithMenuItem,
             this.toolStripSeparator1,
             this.OpenExplorerMenuItem,
             this.CopyPathMenuItem});
             this.result_listBox_contextMenuStrip.Name = "result_listBox_contextMenuStrip";
-            this.result_listBox_contextMenuStrip.Size = new System.Drawing.Size(200, 98);
+            this.result_listBox_contextMenuStrip.Size = new System.Drawing.Size(200, 164);
             this.result_listBox_contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.result_listBox_contextMenuStrip_Opening);
             // 
             // OpenMenuItem
@@ -226,6 +233,7 @@
             this.fileType_comboBox.Size = new System.Drawing.Size(330, 21);
             this.fileType_comboBox.TabIndex = 4;
             // 
+<<<<<<< HEAD
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -269,6 +277,21 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "О программе";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+=======
+            // OpenWithNotepadPlusPlus
+            // 
+            this.OpenWithNotepadPlusPlus.Name = "OpenWithNotepadPlusPlus";
+            this.OpenWithNotepadPlusPlus.Size = new System.Drawing.Size(199, 22);
+            this.OpenWithNotepadPlusPlus.Text = "Edit with Notepad++";
+            this.OpenWithNotepadPlusPlus.Click += new System.EventHandler(this.OpenWithNotepadPlusPlus_Click);
+            // 
+            // OpenWithNotepad
+            // 
+            this.OpenWithNotepad.Name = "OpenWithNotepad";
+            this.OpenWithNotepad.Size = new System.Drawing.Size(199, 22);
+            this.OpenWithNotepad.Text = "Блокнот";
+            this.OpenWithNotepad.Click += new System.EventHandler(this.OpenWithNotepad_Click);
+>>>>>>> EditWithNotepad++
             // 
             // MainForm
             // 
@@ -327,11 +350,16 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem OpenExplorerMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CopyPathMenuItem;
+<<<<<<< HEAD
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+=======
+        private System.Windows.Forms.ToolStripMenuItem OpenWithNotepad;
+        private System.Windows.Forms.ToolStripMenuItem OpenWithNotepadPlusPlus;
+>>>>>>> EditWithNotepad++
     }
 }
 
