@@ -30,11 +30,8 @@ namespace FileFindTool
             InitializeFileTypesCombobox();
 
             fileType_comboBox.GotFocus += fileType_comboBox_OnFocus;
-<<<<<<< HEAD
             toolStripStatusLabel.Text = "";
-=======
             OpenWithNotepadPlusPlus.Enabled = NotepadPluPlusHelper.IsInstalled();
->>>>>>> EditWithNotepad++
         }
 
 
