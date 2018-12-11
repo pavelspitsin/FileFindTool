@@ -321,8 +321,21 @@ namespace FileFindTool
 
         private void OpenWithNotepadPlusPlus_Click(object sender, EventArgs e)
         {
-            string filePath = GetSelectedFilePath();
-            System.Diagnostics.Process.Start("notepad++.exe", string.Format("\"{0}\"", filePath));
+            try
+            {
+                string filePath = GetSelectedFilePath();
+                string exePath = NotepadPluPlusHelper.Path;
+
+                System.Diagnostics.Process.Start(exePath, string.Format("\"{0}\"", filePath));
+            }
+            catch (Win32Exception)
+            {
+                MessageBox.Show("Некорректный путь до Notepad++");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void OpenWithMenuItem_Click(object sender, EventArgs e)

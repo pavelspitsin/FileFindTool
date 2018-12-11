@@ -30,11 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.openFolder_textBox = new System.Windows.Forms.TextBox();
             this.open_btn = new System.Windows.Forms.Button();
             this.result_listBox = new System.Windows.Forms.ListBox();
             this.result_listBox_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenWithNotepad = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenWithNotepadPlusPlus = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenWithMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.OpenExplorerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,21 +54,11 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.OpenWithNotepadPlusPlus = new System.Windows.Forms.ToolStripMenuItem();
-            this.OpenWithNotepad = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFolder_textBox = new System.Windows.Forms.TextBox();
             this.result_listBox_contextMenuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // openFolder_textBox
-            // 
-            this.openFolder_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.openFolder_textBox.Location = new System.Drawing.Point(14, 29);
-            this.openFolder_textBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
-            this.openFolder_textBox.Name = "openFolder_textBox";
-            this.openFolder_textBox.Size = new System.Drawing.Size(730, 21);
-            this.openFolder_textBox.TabIndex = 0;
             // 
             // open_btn
             // 
@@ -103,7 +94,7 @@
             this.OpenExplorerMenuItem,
             this.CopyPathMenuItem});
             this.result_listBox_contextMenuStrip.Name = "result_listBox_contextMenuStrip";
-            this.result_listBox_contextMenuStrip.Size = new System.Drawing.Size(200, 164);
+            this.result_listBox_contextMenuStrip.Size = new System.Drawing.Size(200, 142);
             this.result_listBox_contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.result_listBox_contextMenuStrip_Opening);
             // 
             // OpenMenuItem
@@ -112,6 +103,20 @@
             this.OpenMenuItem.Size = new System.Drawing.Size(199, 22);
             this.OpenMenuItem.Text = "Открыть";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
+            // 
+            // OpenWithNotepad
+            // 
+            this.OpenWithNotepad.Name = "OpenWithNotepad";
+            this.OpenWithNotepad.Size = new System.Drawing.Size(199, 22);
+            this.OpenWithNotepad.Text = "Блокнот";
+            this.OpenWithNotepad.Click += new System.EventHandler(this.OpenWithNotepad_Click);
+            // 
+            // OpenWithNotepadPlusPlus
+            // 
+            this.OpenWithNotepadPlusPlus.Name = "OpenWithNotepadPlusPlus";
+            this.OpenWithNotepadPlusPlus.Size = new System.Drawing.Size(199, 22);
+            this.OpenWithNotepadPlusPlus.Text = "Edit with Notepad++";
+            this.OpenWithNotepadPlusPlus.Click += new System.EventHandler(this.OpenWithNotepadPlusPlus_Click);
             // 
             // OpenWithMenuItem
             // 
@@ -270,22 +275,18 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.aboutToolStripMenuItem.Text = "О программе";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // OpenWithNotepadPlusPlus
             // 
-            this.OpenWithNotepadPlusPlus.Name = "OpenWithNotepadPlusPlus";
-            this.OpenWithNotepadPlusPlus.Size = new System.Drawing.Size(199, 22);
-            this.OpenWithNotepadPlusPlus.Text = "Edit with Notepad++";
-            this.OpenWithNotepadPlusPlus.Click += new System.EventHandler(this.OpenWithNotepadPlusPlus_Click);
+            // openFolder_textBox
             // 
-            // OpenWithNotepad
-            // 
-            this.OpenWithNotepad.Name = "OpenWithNotepad";
-            this.OpenWithNotepad.Size = new System.Drawing.Size(199, 22);
-            this.OpenWithNotepad.Text = "Блокнот";
-            this.OpenWithNotepad.Click += new System.EventHandler(this.OpenWithNotepad_Click);
+            this.openFolder_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.openFolder_textBox.Location = new System.Drawing.Point(14, 29);
+            this.openFolder_textBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
+            this.openFolder_textBox.Name = "openFolder_textBox";
+            this.openFolder_textBox.Size = new System.Drawing.Size(730, 21);
+            this.openFolder_textBox.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -325,8 +326,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox openFolder_textBox;
         private System.Windows.Forms.Button open_btn;
         private System.Windows.Forms.ListBox result_listBox;
         private System.Windows.Forms.TextBox searchText_textBox;
@@ -351,6 +350,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OpenWithNotepad;
         private System.Windows.Forms.ToolStripMenuItem OpenWithNotepadPlusPlus;
+        private System.Windows.Forms.TextBox openFolder_textBox;
     }
 }
 
