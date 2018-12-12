@@ -29,6 +29,10 @@ namespace FileFindTool
             InitializeComponent();
             InitializeFileTypesCombobox();
 
+            Settings.Load();
+
+            UpdateLastDirectories();
+
             fileType_comboBox.GotFocus += fileType_comboBox_OnFocus;
             toolStripStatusLabel.Text = "";
             OpenWithNotepadPlusPlus.Enabled = NotepadPluPlusHelper.IsInstalled();
@@ -36,6 +40,25 @@ namespace FileFindTool
 
 
         #region private methods
+
+        private void AddLastDirectory(string directory)
+        {
+            Settings.LastDirectories.Add(directory);
+            Settings.Save();
+            UpdateLastDirectories();
+        }
+
+        private void UpdateLastDirectories()
+        {
+            openFolder_comboBox.Items.Clear();
+
+            string[] lastDirectories = Settings.LastDirectories.ToArray(true);
+
+            foreach (string directory in lastDirectories)
+            {
+                openFolder_comboBox.Items.Add(directory);
+            }
+        }
 
         private void ChangeButtons(SearchState state)
         {
@@ -47,7 +70,7 @@ namespace FileFindTool
                     pause_btn.Enabled = true;
                     stop_btn.Enabled = true;
                     open_btn.Enabled = false;
-                    openFolder_textBox.Enabled = false;
+                    openFolder_comboBox.Enabled = false;
                     fileType_comboBox.Enabled = false;
                     searchText_textBox.Enabled = false;
                     break;
@@ -57,7 +80,7 @@ namespace FileFindTool
                     pause_btn.Enabled = false;
                     stop_btn.Enabled = true;
                     open_btn.Enabled = false;
-                    openFolder_textBox.Enabled = false;
+                    openFolder_comboBox.Enabled = false;
                     fileType_comboBox.Enabled = false;
                     searchText_textBox.Enabled = false;
                     break;
@@ -67,7 +90,7 @@ namespace FileFindTool
                     pause_btn.Enabled = false;
                     stop_btn.Enabled = false;
                     open_btn.Enabled = true;
-                    openFolder_textBox.Enabled = true;
+                    openFolder_comboBox.Enabled = true;
                     fileType_comboBox.Enabled = true;
                     searchText_textBox.Enabled = true;
                     break;
@@ -109,7 +132,16 @@ namespace FileFindTool
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //this.ActiveControl = searchText_textBox;
+
+        }
+
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Settings.Save();
+            }
         }
 
         private void open_btn_Click(object sender, EventArgs e)
@@ -120,7 +152,7 @@ namespace FileFindTool
 
             if (result == CommonFileDialogResult.Ok)
             {
-                openFolder_textBox.Text = dlg.FileName;
+                openFolder_comboBox.Text = dlg.FileName;
                 toolStripStatusLabel.Text = "";
             }
         }
@@ -129,7 +161,7 @@ namespace FileFindTool
         {
             string searchText = searchText_textBox.Text.Trim();
             string searchPattern = fileType_comboBox.Text.Trim();
-            string path = openFolder_textBox.Text.Trim();
+            string path = openFolder_comboBox.Text.Trim();
 
 
             if (_searchState == SearchState.Stopped)
@@ -137,7 +169,7 @@ namespace FileFindTool
                 if (!Directory.Exists(path))
                 {
                     MessageBox.Show("Пожалуйста, укажите корректный путь.");
-                    this.ActiveControl = openFolder_textBox;
+                    this.ActiveControl = openFolder_comboBox;
                     return;
                 }
 
@@ -153,6 +185,8 @@ namespace FileFindTool
 
                 try
                 {
+                    AddLastDirectory(path);
+
                     _filesEnumerator = new FilesEnumerator(path, searchPattern, allDirectories_checkBox.Checked ?
                                                                                 SearchOption.AllDirectories :
                                                                                 SearchOption.TopDirectoryOnly

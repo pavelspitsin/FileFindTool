@@ -54,7 +54,7 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFolder_textBox = new System.Windows.Forms.TextBox();
+            this.openFolder_comboBox = new System.Windows.Forms.ComboBox();
             this.result_listBox_contextMenuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -279,20 +279,20 @@
             this.aboutToolStripMenuItem.Text = "О программе";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // openFolder_textBox
+            // openFolder_comboBox
             // 
-            this.openFolder_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.openFolder_textBox.Location = new System.Drawing.Point(14, 29);
-            this.openFolder_textBox.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
-            this.openFolder_textBox.Name = "openFolder_textBox";
-            this.openFolder_textBox.Size = new System.Drawing.Size(730, 21);
-            this.openFolder_textBox.TabIndex = 0;
+            this.openFolder_comboBox.FormattingEnabled = true;
+            this.openFolder_comboBox.Location = new System.Drawing.Point(14, 28);
+            this.openFolder_comboBox.Name = "openFolder_comboBox";
+            this.openFolder_comboBox.Size = new System.Drawing.Size(730, 21);
+            this.openFolder_comboBox.TabIndex = 14;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 466);
+            this.Controls.Add(this.openFolder_comboBox);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.fileType_comboBox);
@@ -305,7 +305,6 @@
             this.Controls.Add(this.searchText_textBox);
             this.Controls.Add(this.result_listBox);
             this.Controls.Add(this.open_btn);
-            this.Controls.Add(this.openFolder_textBox);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -314,6 +313,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Find Tool";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.result_listBox_contextMenuStrip.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
@@ -350,7 +350,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OpenWithNotepad;
         private System.Windows.Forms.ToolStripMenuItem OpenWithNotepadPlusPlus;
-        private System.Windows.Forms.TextBox openFolder_textBox;
+        private System.Windows.Forms.ComboBox openFolder_comboBox;
     }
 }
 
