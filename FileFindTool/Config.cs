@@ -11,12 +11,14 @@ namespace FileFindTool
     {
         public static string DefaultFileType { get; }
         public static string FileTypes { get; }
+        public static string SettingsFilePath { get; }
         public static string NotepadPluPlusPath { get; }
 
         static Config()
         {
             DefaultFileType = ConfigurationManager.AppSettings["DefaultFileType"];
             FileTypes = ConfigurationManager.AppSettings["FileTypes"];
+            SettingsFilePath = ConfigurationManager.AppSettings["SettingsFilePath"];
             NotepadPluPlusPath = ConfigurationManager.AppSettings["NotepadPluPlusPath"];
         }
     }
