@@ -197,6 +197,8 @@ namespace FileFindTool
                     MessageBox.Show(ex.Message);
                     return;
                 }
+                
+                result_listBox.Items.Clear();
             }
             
 
@@ -273,7 +275,6 @@ namespace FileFindTool
                 var result = e.Result as string[];
                 if (result != null)
                 {
-                    result_listBox.Items.Clear();
                     result_listBox.Items.AddRange(result);
                 }
             }
@@ -292,7 +293,6 @@ namespace FileFindTool
                 var result = e.Result as string[];
                 if (result != null)
                 {
-                    result_listBox.Items.Clear();
                     result_listBox.Items.AddRange(result);
                 }
                 DisposeFilesEnumerator();
