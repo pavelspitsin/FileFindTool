@@ -21,9 +21,13 @@ namespace FileFindTool
 
     public partial class MainForm : Form
     {
+        private readonly int _maxSearchTextLength;
+
         private FilesEnumerator _filesEnumerator = null;
-        private string _selectedEncoding;
         private SearchState _searchState = SearchState.Stopped;
+
+        private bool _multilineSearch;
+        private string _selectedEncoding;
 
         public MainForm()
         {
@@ -35,6 +39,8 @@ namespace FileFindTool
 
             InitializeFileTypesCombobox();
             InitializeEncodingsCombobox();
+
+            _maxSearchTextLength = searchText_textBox.MaxLength;
 
             fileType_comboBox.GotFocus += fileType_comboBox_OnFocus;
             toolStripStatusLabel.Text = "";
@@ -210,8 +216,6 @@ namespace FileFindTool
                                                                                 SearchOption.AllDirectories :
                                                                                 SearchOption.TopDirectoryOnly
                     );
-
-                    _selectedEncoding = encodings_comboBox.SelectedItem.ToString();
                 }
                 catch(Exception ex)
                 {
@@ -264,8 +268,24 @@ namespace FileFindTool
             if (_filesEnumerator == null)
                 return;
             
-            string filePath = _filesEnumerator.GetNext();
+            string searchText = e.Argument.ToString();
+            string encodingName = _selectedEncoding;
+            bool multiline = _multilineSearch;
+
+            IFileChecker fileChecker = null;
+
+            if (_multilineSearch)
+            {
+                fileChecker = new FileCheckerMultiLine(searchText, encodingName, _maxSearchTextLength);
+            }
+            else
+            {
+                searchText = searchText.Replace(Environment.NewLine, "");
+                fileChecker = new FileCheckerSingleLine(searchText, encodingName);
+            }
+
             List<string> files = new List<string>();
+            string filePath = _filesEnumerator.GetNext();
 
             while (filePath != null)
             {
@@ -275,10 +295,7 @@ namespace FileFindTool
                     return;
                 }
 
-                string searchText = e.Argument.ToString();
-                string encodingName = _selectedEncoding;
-
-                if (FileChecker.Contains(filePath, searchText, encodingName))
+                if (fileChecker.Contains(filePath))
                 {
                     files.Add(filePath);
                 }
@@ -356,6 +373,18 @@ namespace FileFindTool
         {
             AboutForm form = new AboutForm();
             form.ShowDialog(this);
+        }
+
+        private void multiline_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            _multilineSearch = cb.Checked;
+        }
+
+
+        private void encodings_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedEncoding = encodings_comboBox.SelectedItem.ToString();
         }
 
         #endregion

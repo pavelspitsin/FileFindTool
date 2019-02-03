@@ -57,6 +57,7 @@
             this.openFolder_comboBox = new System.Windows.Forms.ComboBox();
             this.encoding_label = new System.Windows.Forms.Label();
             this.encodings_comboBox = new System.Windows.Forms.ComboBox();
+            this.multiline_checkBox = new System.Windows.Forms.CheckBox();
             this.result_listBox_contextMenuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -149,6 +150,7 @@
             // searchText_textBox
             // 
             this.searchText_textBox.Location = new System.Drawing.Point(14, 146);
+            this.searchText_textBox.MaxLength = 4096;
             this.searchText_textBox.Multiline = true;
             this.searchText_textBox.Name = "searchText_textBox";
             this.searchText_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -307,12 +309,28 @@
             this.encodings_comboBox.Name = "encodings_comboBox";
             this.encodings_comboBox.Size = new System.Drawing.Size(330, 21);
             this.encodings_comboBox.TabIndex = 7;
+            this.encodings_comboBox.SelectedIndexChanged += new System.EventHandler(this.encodings_comboBox_SelectedIndexChanged);
+            // 
+            // multiline_checkBox
+            // 
+            this.multiline_checkBox.AutoSize = true;
+            this.multiline_checkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.multiline_checkBox.Location = new System.Drawing.Point(238, 121);
+            this.multiline_checkBox.Margin = new System.Windows.Forms.Padding(5);
+            this.multiline_checkBox.Name = "multiline_checkBox";
+            this.multiline_checkBox.Size = new System.Drawing.Size(106, 17);
+            this.multiline_checkBox.TabIndex = 5;
+            this.multiline_checkBox.Text = "Многострочный";
+            this.multiline_checkBox.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.multiline_checkBox.UseVisualStyleBackColor = true;
+            this.multiline_checkBox.CheckedChanged += new System.EventHandler(this.multiline_checkBox_CheckedChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 476);
+            this.Controls.Add(this.multiline_checkBox);
             this.Controls.Add(this.encodings_comboBox);
             this.Controls.Add(this.encoding_label);
             this.Controls.Add(this.openFolder_comboBox);
@@ -376,6 +394,7 @@
         private System.Windows.Forms.ComboBox openFolder_comboBox;
         private System.Windows.Forms.Label encoding_label;
         private System.Windows.Forms.ComboBox encodings_comboBox;
+        private System.Windows.Forms.CheckBox multiline_checkBox;
     }
 }
 
