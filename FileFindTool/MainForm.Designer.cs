@@ -55,6 +55,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFolder_comboBox = new System.Windows.Forms.ComboBox();
+            this.encoding_label = new System.Windows.Forms.Label();
+            this.encodings_comboBox = new System.Windows.Forms.ComboBox();
             this.result_listBox_contextMenuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -79,8 +81,8 @@
             this.result_listBox.Location = new System.Drawing.Point(360, 64);
             this.result_listBox.Margin = new System.Windows.Forms.Padding(3, 5, 5, 3);
             this.result_listBox.Name = "result_listBox";
-            this.result_listBox.Size = new System.Drawing.Size(470, 368);
-            this.result_listBox.TabIndex = 11;
+            this.result_listBox.Size = new System.Drawing.Size(470, 381);
+            this.result_listBox.TabIndex = 12;
             this.result_listBox.DoubleClick += new System.EventHandler(this.result_listBox_DoubleClick);
             // 
             // result_listBox_contextMenuStrip
@@ -150,7 +152,7 @@
             this.searchText_textBox.Multiline = true;
             this.searchText_textBox.Name = "searchText_textBox";
             this.searchText_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.searchText_textBox.Size = new System.Drawing.Size(330, 255);
+            this.searchText_textBox.Size = new System.Drawing.Size(330, 205);
             this.searchText_textBox.TabIndex = 6;
             // 
             // searchText_label
@@ -165,10 +167,10 @@
             // 
             // find_btn
             // 
-            this.find_btn.Location = new System.Drawing.Point(14, 407);
+            this.find_btn.Location = new System.Drawing.Point(12, 420);
             this.find_btn.Name = "find_btn";
             this.find_btn.Size = new System.Drawing.Size(85, 25);
-            this.find_btn.TabIndex = 7;
+            this.find_btn.TabIndex = 8;
             this.find_btn.Text = "Найти";
             this.find_btn.UseVisualStyleBackColor = true;
             this.find_btn.Click += new System.EventHandler(this.find_btn_Click);
@@ -176,10 +178,10 @@
             // pause_btn
             // 
             this.pause_btn.Enabled = false;
-            this.pause_btn.Location = new System.Drawing.Point(136, 407);
+            this.pause_btn.Location = new System.Drawing.Point(133, 420);
             this.pause_btn.Name = "pause_btn";
             this.pause_btn.Size = new System.Drawing.Size(85, 25);
-            this.pause_btn.TabIndex = 8;
+            this.pause_btn.TabIndex = 9;
             this.pause_btn.Text = "Пауза";
             this.pause_btn.UseVisualStyleBackColor = true;
             this.pause_btn.Click += new System.EventHandler(this.pause_btn_Click);
@@ -187,10 +189,10 @@
             // stop_btn
             // 
             this.stop_btn.Enabled = false;
-            this.stop_btn.Location = new System.Drawing.Point(259, 407);
+            this.stop_btn.Location = new System.Drawing.Point(259, 420);
             this.stop_btn.Name = "stop_btn";
             this.stop_btn.Size = new System.Drawing.Size(85, 25);
-            this.stop_btn.TabIndex = 9;
+            this.stop_btn.TabIndex = 10;
             this.stop_btn.Text = "Остановить";
             this.stop_btn.UseVisualStyleBackColor = true;
             this.stop_btn.Click += new System.EventHandler(this.stop_btn_Click);
@@ -239,7 +241,7 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 444);
+            this.statusStrip.Location = new System.Drawing.Point(0, 454);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(844, 22);
             this.statusStrip.SizingGrip = false;
@@ -287,11 +289,32 @@
             this.openFolder_comboBox.Size = new System.Drawing.Size(730, 21);
             this.openFolder_comboBox.TabIndex = 14;
             // 
+            // encoding_label
+            // 
+            this.encoding_label.AutoSize = true;
+            this.encoding_label.Location = new System.Drawing.Point(11, 367);
+            this.encoding_label.Margin = new System.Windows.Forms.Padding(5);
+            this.encoding_label.Name = "encoding_label";
+            this.encoding_label.Size = new System.Drawing.Size(65, 13);
+            this.encoding_label.TabIndex = 15;
+            this.encoding_label.Text = "Кодировка:";
+            // 
+            // encodings_comboBox
+            // 
+            this.encodings_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.encodings_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.encodings_comboBox.Location = new System.Drawing.Point(14, 388);
+            this.encodings_comboBox.Name = "encodings_comboBox";
+            this.encodings_comboBox.Size = new System.Drawing.Size(330, 21);
+            this.encodings_comboBox.TabIndex = 7;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 466);
+            this.ClientSize = new System.Drawing.Size(844, 476);
+            this.Controls.Add(this.encodings_comboBox);
+            this.Controls.Add(this.encoding_label);
             this.Controls.Add(this.openFolder_comboBox);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
@@ -351,6 +374,8 @@
         private System.Windows.Forms.ToolStripMenuItem OpenWithNotepad;
         private System.Windows.Forms.ToolStripMenuItem OpenWithNotepadPlusPlus;
         private System.Windows.Forms.ComboBox openFolder_comboBox;
+        private System.Windows.Forms.Label encoding_label;
+        private System.Windows.Forms.ComboBox encodings_comboBox;
     }
 }
 

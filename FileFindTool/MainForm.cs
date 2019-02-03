@@ -22,16 +22,19 @@ namespace FileFindTool
     public partial class MainForm : Form
     {
         private FilesEnumerator _filesEnumerator = null;
+        private string _selectedEncoding;
         private SearchState _searchState = SearchState.Stopped;
 
         public MainForm()
         {
             InitializeComponent();
-            InitializeFileTypesCombobox();
 
             Settings.Load();
 
             UpdateLastDirectories();
+
+            InitializeFileTypesCombobox();
+            InitializeEncodingsCombobox();
 
             fileType_comboBox.GotFocus += fileType_comboBox_OnFocus;
             toolStripStatusLabel.Text = "";
@@ -73,6 +76,7 @@ namespace FileFindTool
                     openFolder_comboBox.Enabled = false;
                     fileType_comboBox.Enabled = false;
                     searchText_textBox.Enabled = false;
+                    encodings_comboBox.Enabled = false;
                     break;
                 case SearchState.OnPause:
                     find_btn.Text = "Продолжить";
@@ -83,6 +87,7 @@ namespace FileFindTool
                     openFolder_comboBox.Enabled = false;
                     fileType_comboBox.Enabled = false;
                     searchText_textBox.Enabled = false;
+                    encodings_comboBox.Enabled = false;
                     break;
                 case SearchState.Stopped:
                     find_btn.Text = "Найти";
@@ -93,6 +98,7 @@ namespace FileFindTool
                     openFolder_comboBox.Enabled = true;
                     fileType_comboBox.Enabled = true;
                     searchText_textBox.Enabled = true;
+                    encodings_comboBox.Enabled = true;
                     break;
                 default:
                     break;
@@ -117,6 +123,20 @@ namespace FileFindTool
             foreach (string fileType in fileTypes)
             {
                 fileType_comboBox.Items.Add(fileType);
+            }
+        }
+        
+        private void InitializeEncodingsCombobox()
+        {
+            string[] encodings = Config.Encodings.Split(';').Where(str => str.Length > 0).ToArray();
+
+            if (encodings.Length > 0)
+            {
+                foreach (string encoding in encodings)
+                {
+                    encodings_comboBox.Items.Add(encoding);
+                }
+                encodings_comboBox.SelectedIndex = 0;
             }
         }
 
@@ -153,7 +173,6 @@ namespace FileFindTool
             if (result == CommonFileDialogResult.Ok)
             {
                 openFolder_comboBox.Text = dlg.FileName;
-                toolStripStatusLabel.Text = "";
             }
         }
 
@@ -191,6 +210,8 @@ namespace FileFindTool
                                                                                 SearchOption.AllDirectories :
                                                                                 SearchOption.TopDirectoryOnly
                     );
+
+                    _selectedEncoding = encodings_comboBox.SelectedItem.ToString();
                 }
                 catch(Exception ex)
                 {
@@ -221,6 +242,8 @@ namespace FileFindTool
             {
                 backgroundWorker.CancelAsync();
             }
+
+            toolStripStatusLabel.Text = "Pause";
         }
 
         private void stop_btn_Click(object sender, EventArgs e)
@@ -232,6 +255,8 @@ namespace FileFindTool
             {
                 backgroundWorker.CancelAsync();
             }
+
+            toolStripStatusLabel.Text = "";
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -251,8 +276,9 @@ namespace FileFindTool
                 }
 
                 string searchText = e.Argument.ToString();
+                string encodingName = _selectedEncoding;
 
-                if (FileChecker.Contains(filePath, searchText))
+                if (FileChecker.Contains(filePath, searchText, encodingName))
                 {
                     files.Add(filePath);
                 }
@@ -270,8 +296,6 @@ namespace FileFindTool
             }
             else if (_searchState == SearchState.OnPause)       // On pause
             {                
-                toolStripStatusLabel.Text = "Pause";
-
                 var result = e.Result as string[];
                 if (result != null)
                 {
@@ -280,13 +304,10 @@ namespace FileFindTool
             }
             else if (_searchState == SearchState.Stopped)       // Stopped
             {                
-                toolStripStatusLabel.Text = "";
                 DisposeFilesEnumerator();
             }
             else if (_searchState == SearchState.InProcess)     //Done
             {                
-                toolStripStatusLabel.Text = "Complete";
-
                 _searchState = SearchState.Stopped;
                 ChangeButtons(_searchState);
 
@@ -296,6 +317,7 @@ namespace FileFindTool
                     result_listBox.Items.AddRange(result);
                 }
                 DisposeFilesEnumerator();
+                toolStripStatusLabel.Text = "Complete";
             }
         }
 
