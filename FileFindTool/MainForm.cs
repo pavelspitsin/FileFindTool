@@ -122,13 +122,15 @@ namespace FileFindTool
 
         private void InitializeFileTypesCombobox()
         {
-            fileType_comboBox.Text = Config.DefaultFileType;
-
             string[] fileTypes = Config.FileTypes.Split(';').Where(str => str.Length > 0).ToArray();
 
-            foreach (string fileType in fileTypes)
+            if (fileTypes.Length > 0)
             {
-                fileType_comboBox.Items.Add(fileType);
+                foreach (string fileType in fileTypes)
+                {
+                    fileType_comboBox.Items.Add(fileType);
+                }
+                fileType_comboBox.SelectedIndex = 0;
             }
         }
         

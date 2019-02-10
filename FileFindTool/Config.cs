@@ -9,7 +9,6 @@ namespace FileFindTool
 {
     internal static class Config
     {
-        public static string DefaultFileType { get; }
         public static string FileTypes { get; }
         public static string SettingsFilePath { get; }
         public static string NotepadPluPlusPath { get; }
@@ -17,7 +16,6 @@ namespace FileFindTool
 
         static Config()
         {
-            DefaultFileType = ConfigurationManager.AppSettings["DefaultFileType"];
             FileTypes = ConfigurationManager.AppSettings["FileTypes"];
             SettingsFilePath = ConfigurationManager.AppSettings["SettingsFilePath"];
             NotepadPluPlusPath = ConfigurationManager.AppSettings["NotepadPluPlusPath"];
